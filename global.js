@@ -4,11 +4,14 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-let pages = [ // this is an array of elements where each element has url and title
-    { url: 'index.html', title: 'Home' },
-    { url: 'projects/', title: 'Projects' },
-    { url: 'resume/', title: 'Resume' },
-    { url: 'contact/', title: 'Contact' },
+const isPages = window.location.hostname === 'lemoncastle.github.io'; // Determine if on GitHub Pages
+const BASE_URL = isPages ? '/portfolio' : ''; //sets base url for github or nothing for local 
+
+let pages = [
+    { url: `${BASE_URL}/index.html`, title: 'Home' },
+    { url: `${BASE_URL}/projects/`, title: 'Projects' },
+    { url: `${BASE_URL}/resume/`, title: 'Resume' },
+    { url: `${BASE_URL}/contact/`, title: 'Contact' },
     { url: 'https://github.com/lemoncastle', title: 'Profile' }
 ];
 
@@ -25,7 +28,6 @@ for (let p of pages) {
         url = '../' + url;
     }
 
-    // nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
