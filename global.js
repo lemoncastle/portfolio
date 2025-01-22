@@ -25,7 +25,7 @@ for (let p of pages) {
     let title = p.title;
     
     if (!ARE_WE_HOME && !url.startsWith('http')) {
-        url = '../' + url;
+        url = BASE_URL + url;
     }
 
     let a = document.createElement('a');
