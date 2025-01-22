@@ -3,26 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Lemoncastle</title>
+    <title>Contact</title>
     <link rel="stylesheet" href="../style.css">
+    <script src="../global.js" type="module"></script>
 </head>
 <body>
     <h1>Contact</h1>
 
-    <nav>
-        <a href="../index.html">Home</a>
-        <a href="../projects/index.html">Projects</a>
-        <a href="../resume/index.html">Resume</a>
-        <a href="index.html" class="current">Contact</a>
-        <a href="https://github.com/lemoncastle" target="_blank">Profile</a>
-    </nav>
-
-    <form action=mailto:ady005@ucsd.edu method="POST" enctype="text/plain">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
+    <form action=mailto:ady005@ucsd.edu method="GET">
         <label for="subject">Subject:</label>
         <input type="text" id="subject" name="subject">
-        <label for="body">Body:</label>
+        <label for="body">Message:</label>
         <textarea name="body"></textarea>
         <button>Submit</button>
     </form>   
