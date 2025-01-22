@@ -5,7 +5,7 @@ function $$(selector, context = document) {
 }
 
 let pages = [ // this is an array of elements where each element has url and title
-    { url: '', title: 'Home' },
+    { url: '/', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'resume/', title: 'Resume' },
     { url: 'contact/', title: 'Contact' },
@@ -15,7 +15,7 @@ let pages = [ // this is an array of elements where each element has url and tit
 let nav = document.createElement('nav'); //creates a new nav thing
 document.body.prepend(nav); // this places the new nav we made and puts it at the top of body using prepend
 
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
+const ARE_WE_HOME = document.documentElement.classList.contains('Home');
 
 for (let p of pages) {
     let url = p.url;
