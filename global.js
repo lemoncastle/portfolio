@@ -4,28 +4,25 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-const isPages = window.location.hostname === 'lemoncastle.github.io'; // Determine if on GitHub Pages
-const BASE_URL = isPages ? '/portfolio' : ''; //sets base url for github or nothing for local 
-
-let pages = [
-    { url: `${BASE_URL}/index.html`, title: 'Home' },
-    { url: `${BASE_URL}/projects/`, title: 'Projects' },
-    { url: `${BASE_URL}/resume/`, title: 'Resume' },
-    { url: `${BASE_URL}/contact/`, title: 'Contact' },
+let pages = [ // this is an array of elements where each element has url and title
+    { url: 'index.html', title: 'Home' },
+    { url: 'projects/', title: 'Projects' },
+    { url: 'resume/', title: 'Resume' },
+    { url: 'contact/', title: 'Contact' },
     { url: 'https://github.com/lemoncastle', title: 'Profile' }
 ];
 
 let nav = document.createElement('nav'); //creates a new nav thing
 document.body.prepend(nav); // this places the new nav we made and puts it at the top of body using prepend
 
-// const ARE_WE_HOME = document.documentElement.classList.contains('home');
+const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
     
-    if (!url.startsWith('http')) {
-        url = BASE_URL + url;
+    if (!ARE_WE_HOME && !url.startsWith('http')) {
+        url = '../' + url;
     }
 
     let a = document.createElement('a');
