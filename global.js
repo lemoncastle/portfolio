@@ -5,7 +5,7 @@ function $$(selector, context = document) {
 }
 
 let pages = [ // this is an array of elements where each element has url and title
-    { url: 'index.html', title: 'Home' },
+    { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'resume/', title: 'Resume' },
     { url: 'contact/', title: 'Contact' },
