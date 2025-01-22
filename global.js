@@ -18,13 +18,13 @@ let pages = [
 let nav = document.createElement('nav'); //creates a new nav thing
 document.body.prepend(nav); // this places the new nav we made and puts it at the top of body using prepend
 
-const ARE_WE_HOME = document.documentElement.classList.contains('home');
+// const ARE_WE_HOME = document.documentElement.classList.contains('home');
 
 for (let p of pages) {
     let url = p.url;
     let title = p.title;
     
-    if (!ARE_WE_HOME && !url.startsWith('http')) {
+    if (!url.startsWith('http')) {
         url = BASE_URL + url;
     }
 
