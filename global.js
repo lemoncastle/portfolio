@@ -5,7 +5,7 @@ function $$(selector, context = document) {
 }
 
 let pages = [ // this is an array of elements where each element has url and title
-    { url: '', title: 'Home' },
+    { url: '/', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'resume/', title: 'Resume' },
     { url: 'contact/', title: 'Contact' },
@@ -23,6 +23,10 @@ for (let p of pages) {
     
     if (!ARE_WE_HOME && !url.startsWith('http')) {
         url = '../' + url;
+      }
+    
+    if(ARE_WE_HOME) {
+        url = url+'/';  
     }
 
     let a = document.createElement('a');
