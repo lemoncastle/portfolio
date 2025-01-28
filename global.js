@@ -5,7 +5,7 @@ function $$(selector, context = document) {
 }
 
 let pages = [ // this is an array of elements where each element has url and title
-    { url: '/', title: 'Home' },
+    { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'resume/', title: 'Resume' },
     { url: 'contact/', title: 'Contact' },
@@ -87,3 +87,36 @@ form?.addEventListener('submit', function (event) {
     url = url.slice(0, -1); 
     location.href = url;
 });
+
+// export async function fetchJSON(url) {
+//     try {
+        
+//         const response = await fetch(url); // Fetch the JSON file from the given URL
+//         if (!response.ok) {
+//             throw new Error(`Failed to fetch projects: ${response.statusText}`);
+//         }
+//         const data = await response.json();
+//             return data; 
+
+//     } catch (error) {
+//         console.error('Error fetching or parsing JSON data:', error);
+//     }
+    
+    
+// }
+
+// export function renderProjects(project, containerElement) { //test if containerelement valid ?
+//     containerElement.innerHTML = ''; //this makes sure that the container is empty
+//     const article = document.createElement('article');
+//     article.innerHTML = `
+//         <h3>${project.title}</h3>
+//         <img src="${project.image}" alt="${project.title}">
+//         <p>${project.description}</p>
+//     `; // what about missing data ?
+
+//     containerElement.appendChild(article); //what about when container element is null? 
+// }
+
+// export function renderProjects(project, containerElement, headingLevel = 'h2') {
+//     // write javascript that will allow dynamic heading levels based on previous function
+// }
