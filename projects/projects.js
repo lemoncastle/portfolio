@@ -7,5 +7,5 @@ renderProjects(projects, projectsContainer, 'h2');
 const projectsTitleElement = document.querySelector('.projects-title');
 
 if (projectsTitleElement) {
-    projectsTitleElement.textContent = (projects.length).toString() + " Projects";
+    projectsTitleElement.textContent = (projects.length).toString() + " Projects(fake)";
 }

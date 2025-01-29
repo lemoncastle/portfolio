@@ -97,3 +97,18 @@ header {
     font-family: inherit;
   }
 }
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  font-weight: bold;
+  font-size: 14px;
+}
+#profile-stats dd{
+  grid-row: 2; 
+}

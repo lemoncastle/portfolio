@@ -1,62 +1,74 @@
 [
     {
-        "title": "Lorem ipsum dolor sit.",
+        "title": "BattlePal",
+        "year": "2023",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut id necessitatibus perspiciatis, eveniet minima sed quam voluptas alias, iusto sequi sapiente aspernatur ea repellat, libero fugit maxime vitae eaque repudiandae."
+        "description": "An interactive text based game built with c++"
     },
     {
-        "title": "Asperiores odit voluptates et?",
+        "title": "TFConfig",
+        "year": "2020",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Sapiente optio reiciendis est aliquid obcaecati alias commodi qui velit sequi officiis illum facilis maiores libero nam laudantium nemo repudiandae animi necessitatibus natus, vitae atque deleniti esse. Accusamus, veritatis? Commodi?"
+        "description": "A compilation of my tf2 config and scripts"
     },
     {
-        "title": "Assumenda numquam ab consequuntur.",
+        "title": "TaskNinja",
+        "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Vel quaerat voluptatibus aut alias ipsum blanditiis quibusdam obcaecati nostrum possimus dignissimos nulla fugit veritatis minus, aliquam eligendi perspiciatis? Eos accusantium repudiandae omnis voluptatum possimus, illo veniam hic excepturi ratione!"
+        "description": "A task management app to help users stay on track"
     },
     {
-        "title": "Facere omnis consectetur optio?",
+        "title": "StreamSync",
+        "year": "2020",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Animi atque deserunt consequuntur nemo officia. Impedit, consequatur rerum labore neque necessitatibus laudantium itaque aspernatur! Velit aperiam reprehenderit itaque tenetur veritatis molestiae esse, quos cupiditate vel? Assumenda repellendus voluptatibus mollitia!"
+        "description": "A multi platform music database of your favorite songs."
     },
     {
-        "title": "Perspiciatis omnis voluptatem repudiandae.",
+        "title": "FitTrackPro",
+        "year": "2019",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "A deserunt magni id earum nisi excepturi architecto velit ab obcaecati itaque ea quos, alias quaerat, ex vero sint ducimus tenetur ullam voluptates. Natus, quod animi! Illo neque corporis eius?"
+        "description": "A fitness tracking app that monitors workouts and helps set goals."
     },
     {
-        "title": "Itaque iusto voluptas explicabo?",
+        "title": "CodeQuest",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Voluptate ipsum eligendi culpa. Nesciunt reiciendis, molestias totam nihil ipsa consequuntur beatae quae officia cum iste inventore dolorum, odio odit dolorem. Veniam corrupti dolores laboriosam nisi obcaecati deserunt molestias esse!"
+        "description": "An text based game that teaches you about coding and c++."
     },
     {
-        "title": "Rerum similique quam vero.",
+        "title": "PixelForge",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Error sit optio eius ratione? Consectetur impedit itaque, assumenda expedita cum harum sunt sapiente velit aliquid laudantium, pariatur libero incidunt corporis maiores reprehenderit veniam, perspiciatis recusandae. Ipsa earum facilis laborum."
+        "description": "An interactive web page that allows users to browse a users past artworks."
     },
     {
-        "title": "Quisquam pariatur iste et.",
+        "title": "GameHub Nexus",
+        "year": "2019",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Aperiam provident unde vitae aut earum, quos eaque eveniet asperiores delectus at sint magnam. Sit pariatur nostrum dolorem est incidunt neque minus, deserunt a, facilis amet eum officia quod omnis!"
+        "description": "A social hub for gamers where they can track achievements, join tournaments, and discover trending games based on personalized recommendations."
     },
     {
-        "title": "Accusamus doloremque ad molestiae?",
+        "title": "GhostWriter AI",
+        "year": "2024",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Veritatis neque, sit corrupti obcaecati blanditiis autem a beatae nostrum expedita earum quod. Hic molestiae minima repellat illum nisi blanditiis consequatur, odit ullam voluptatum porro quam id aspernatur. Perspiciatis, et?"
+        "description": "A website that allows users to enter prompts and have a customized AI give you ideas for your next hit song."
     },
     {
-        "title": "Qui laboriosam laudantium temporibus.",
+        "title": "CryptoSentinel",
+        "year": "2020",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Ad quisquam nostrum consectetur nisi est sunt quaerat cumque laborum ipsa ut itaque, corrupti enim ratione non voluptas id eum harum in reprehenderit atque corporis consequatur accusantium tenetur ab. Illo."
+        "description": "An app to help track and manage your crypto currencies."
     },
     {
-        "title": "Tempore, repellat! Laudantium, exercitationem?",
+        "title": "TravelMate",
+        "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Temporibus, tempore aliquid nemo fugit possimus qui eligendi dolore non itaque suscipit facere praesentium, dignissimos quos, nesciunt officia! Expedita enim earum id eveniet. Itaque harum, soluta sunt ad numquam libero."
+        "description": "An easy to use travel planner for all your travelling needs."
     },
     {
-        "title": "Iusto dicta deserunt nisi.",
+        "title": "EcoShopper",
+        "year": "2025",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Quidem aperiam molestias iure alias veniam quod fugiat, ipsum saepe officia cupiditate dolor, in deserunt amet magni harum, porro necessitatibus ad odio ex. Expedita tenetur eos, doloribus fugiat sapiente aperiam."
+        "description": "A browser extension that helps users shop online."
     }
 ]
