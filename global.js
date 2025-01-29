@@ -15,6 +15,7 @@ let pages = [ // this is an array of elements where each element has url and tit
 let nav = document.createElement('nav'); //creates a new nav thing
 document.body.prepend(nav); // this places the new nav we made and puts it at the top of body using prepend
 
+const BASE_PATH = location.pathname.startsWith('/portfolio') ? '/portfolio/' : '/';
 const ARE_WE_HOME = document.documentElement.classList.contains('Home');
 
 for (let p of pages) {
@@ -23,12 +24,8 @@ for (let p of pages) {
     
     if (!ARE_WE_HOME && !url.startsWith('http')) {
         url = '../' + url;
-      }
-    
-    if(ARE_WE_HOME) {
-        url = url+'/';  
     }
-
+    
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
@@ -92,35 +89,49 @@ form?.addEventListener('submit', function (event) {
     location.href = url;
 });
 
-// export async function fetchJSON(url) {
-//     try {
+export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+
+        if (!response.ok) { // Check if the request was successful
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+
+        const data = await response.json(); // Parse and return the JSON data
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+}
+
+export function renderProjects(project, containerElement, headingLevel = 'h2') {
+    if (!(containerElement instanceof HTMLElement)) { // checks if valid type or not 
+        console.error("Not a DOM Element.");
+        return;
+    }
+
+    containerElement.innerHTML = ''; // clear element
+
+    project.forEach(project => { // bruh you need to make it a loop...
+        // define title, image and description first and fill it with default text
+        const title = project.title || "No Title";
+        const image = project.image || "picture";
+        const description = project.description || "No Description Available";
+
+        const article = document.createElement('article');
         
-//         const response = await fetch(url); // Fetch the JSON file from the given URL
-//         if (!response.ok) {
-//             throw new Error(`Failed to fetch projects: ${response.statusText}`);
-//         }
-//         const data = await response.json();
-//             return data; 
+        article.innerHTML = `
+            <${headingLevel}>${title}</${headingLevel}>
+            <img src="${image}" alt="${title}">
+            <p>${description}</p>
+        `;
 
-//     } catch (error) {
-//         console.error('Error fetching or parsing JSON data:', error);
-//     }
-    
-    
-// }
+        containerElement.appendChild(article);
+    });
+}
 
-// export function renderProjects(project, containerElement) { //test if containerelement valid ?
-//     containerElement.innerHTML = ''; //this makes sure that the container is empty
-//     const article = document.createElement('article');
-//     article.innerHTML = `
-//         <h3>${project.title}</h3>
-//         <img src="${project.image}" alt="${project.title}">
-//         <p>${project.description}</p>
-//     `; // what about missing data ?
-
-//     containerElement.appendChild(article); //what about when container element is null? 
-// }
-
-// export function renderProjects(project, containerElement, headingLevel = 'h2') {
-//     // write javascript that will allow dynamic heading levels based on previous function
-// }
+export async function fetchGitHubData(username) {
+    return fetchJSON(`https://api.github.com/users/${username}`);
+  }
