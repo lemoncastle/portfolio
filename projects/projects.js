@@ -18,14 +18,17 @@ let svg = d3.select('#ppie-plot')
 
 let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
 
-let data = [
-    { value: 1, label: 'apples' },
-    { value: 2, label: 'oranges' },
-    { value: 3, label: 'mangos' },
-    { value: 4, label: 'pears' },
-    { value: 5, label: 'limes' },
-    { value: 5, label: 'cherries' },
-];
+//input real data
+let rolledData = d3.rollups(
+  projects,
+  (v) => v.length,
+  (d) => d.year,
+);
+
+let data = rolledData.map(([year, count]) => {
+    return { value: count, label: year };
+});
+
 
 let sliceGenerator = d3.pie().value((d) => d.value);
 let arcData = sliceGenerator(data);
@@ -33,7 +36,7 @@ let arcs = arcData.map((d) => arcGenerator(d));
 
 let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-// Append arcs to the selected SVG
+
 arcData.forEach((d, idx) => {
     svg.append('path')
         .attr('d', arcGenerator(d))
@@ -43,7 +46,20 @@ arcData.forEach((d, idx) => {
 let legend = d3.select('.legend');
 data.forEach((d, idx) => {
     legend.append('li')
-          .attr('class', 'legend-item') // Adds class for styling
-          .attr('style', `--color:${colors(idx)}`) // Uses dynamic color
-          .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+          .attr('style', `--color:${colors(idx)}`) // set the style attribute while passing in parameters
+          .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`); // set the inner html of <li>
+});
+
+// search feature
+let query = '';
+let searchInput = document.querySelector('.searchBar');
+
+searchInput.addEventListener('change', (event) => {
+    query = event.target.value;
+    let filteredProjects = projects.filter((project) => {
+        let values = Object.values(project).join('\n').toLowerCase();
+        return values.includes(query.toLowerCase());
+    });
+    
+    renderProjects(filteredProjects, projectsContainer, 'h2'); // render filtered projects
 });
