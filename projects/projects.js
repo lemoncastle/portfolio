@@ -94,7 +94,7 @@ searchInput.addEventListener('input', (event) => {
     let filteredProjects = projects.filter(project => 
         Object.values(project).join(' ').toLowerCase().includes(query)
     );
-    console.log(data);
+
     renderFilteredProjects(data);
     renderPieChart(filteredProjects); // Render filtered pie chart
 });
