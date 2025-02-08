@@ -9,6 +9,7 @@ let pages = [ // this is an array of elements where each element has url and tit
     { url: 'projects/', title: 'Projects' },
     { url: 'resume/', title: 'Resume' },
     { url: 'contact/', title: 'Contact' },
+    { url: 'meta/', title: 'Meta' },
     { url: 'https://github.com/lemoncastle', title: 'Profile' }
 ];
 
