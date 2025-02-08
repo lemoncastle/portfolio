@@ -90,7 +90,7 @@ let searchInput = document.querySelector('.searchBar');
 
 searchInput.addEventListener('input', (event) => {
     query = event.target.value.toLowerCase();
-    
+    selectedIndex = -1;
     let filteredProjects = projects.filter(project => 
         Object.values(project).join(' ').toLowerCase().includes(query)
     );
