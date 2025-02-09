@@ -70,8 +70,8 @@ body {
     text-wrap: balance;
   }
 
-  h1 { font-size: 375%; }
-  h2 { font-size: 150%; }
+  h1 { font-size: 350%; }
+  h2 { font-size: 140%; }
   h3 { font-size: 100%; }
   
   section {
@@ -188,8 +188,8 @@ path {
 #stats dl {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
-  padding: 15px;
+  gap: 1px;
+  padding: 8px;
   border: 2px solid #ddd;
   border-radius: 3px;
   margin: 2px 0; 
@@ -199,7 +199,7 @@ path {
   grid-row: 1;
   font: inherit;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 13px;
   align-items: center;
   text-align: center;
   margin: 2px 0; 
@@ -207,7 +207,7 @@ path {
 #stats dd{
   grid-row: 2; 
   font:inherit;
-  font-size: 20px;
+  font-size: 16px;
   align-items: center;
   text-align: center;
   margin: 2px 0; 
@@ -290,7 +290,9 @@ circle.selected { fill: #ff6b6b; }
 
 #language-breakdown { font: inherit; }
 
-#language-breakdown dt { font-weight: bold; }
+#language-breakdown dt { 
+  font-weight: bold;
+}
 
 #language-breakdown dd {
   margin-left: 5px;
