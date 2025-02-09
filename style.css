@@ -70,7 +70,7 @@ body {
     text-wrap: balance;
   }
 
-  h1 { font-size: 400%; }
+  h1 { font-size: 375%; }
   h2 { font-size: 150%; }
   h3 { font-size: 100%; }
   
@@ -81,9 +81,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-header {
-  text-align: center;
-}
+header { text-align: center; }
 
 .color-scheme {
     position: absolute;
@@ -102,15 +100,25 @@ header {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin: 2px 0;
 }
-
 #profile-stats dt {
   grid-row: 1;
+  font: inherit;
   font-weight: bold;
   font-size: 14px;
+  text-align: center;
+  margin: 2px 0;
 }
 #profile-stats dd{
   grid-row: 2; 
+  font:inherit;
+  font-size: 20px;
+  text-align: center;
+  margin: 2px 0;
 }
 
 #ppie-plot {
@@ -118,7 +126,6 @@ header {
   margin-block: 2em;
   overflow: visible;
 }
-
 
 .container {
   display: flex;
@@ -176,8 +183,118 @@ path {
   }
 }
 
+.selected:is(li) { font-weight: bold; }
 
-
-.selected:is(li) {
-  font-weight: bold;
+#stats dl {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 3px;
+  margin: 2px 0; 
 }
+
+#stats dt {
+  grid-row: 1;
+  font: inherit;
+  font-weight: bold;
+  font-size: 14px;
+  align-items: center;
+  text-align: center;
+  margin: 2px 0; 
+}
+#stats dd{
+  grid-row: 2; 
+  font:inherit;
+  font-size: 20px;
+  align-items: center;
+  text-align: center;
+  margin: 2px 0; 
+}
+
+.gridlines line { stroke: #ddd; stroke-opacity: 0.6;} 
+.gridlines path { display: none; }
+
+dl.info { /* I let copilot autofill this lol */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  transition-duration: 350ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#commit-tooltip dt {
+  grid-row: 1;
+  font: inherit;
+  font-weight: bold;
+  font-size: 14px;
+  align-items: center;
+  text-align: center;
+  margin: 1px 0;
+}
+#commit-tooltip dd{
+  grid-row: 2; 
+  font:inherit;
+  font-size: 12px;
+  align-items: center;
+  text-align: center;
+  margin: 1px 0; 
+}
+
+.tooltip { /* I let copilot autofill this lol */
+  position: fixed;
+  top: 200em; /* just make it offscreen I guess */
+  left: 1em;
+  padding: 10px;
+  background: white;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition-duration: 350ms;
+  font-size: 12px;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8; /* 5 + 3 */
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+circle.selected { fill: #ff6b6b; }
+
+#language-breakdown { font: inherit; }
+
+#language-breakdown dt { font-weight: bold; }
+
+#language-breakdown dd {
+  margin-left: 5px;
+  margin-right: 25px;
+}
+
+#language-breakdown dt, #language-breakdown dd { display: inline-block; }
