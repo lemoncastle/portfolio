@@ -1,7 +1,7 @@
-import { fetchJSON, renderProjects,fetchGitHubData} from '../global.js';
+import { fetchJSON, renderProjects,fetchGitHubData} from './global.js';
 
 //for top 3 projects on home page
-const projects = await fetchJSON('../lib/projects.json'); //assumes projects.json located in lib folder relative to index.js
+const projects = await fetchJSON('./lib/projects.json'); //assumes projects.json located in lib folder relative to index.js
 const latestProjects = projects.slice(0, 3);
 
 const projectsContainer = document.querySelector('.projects');
