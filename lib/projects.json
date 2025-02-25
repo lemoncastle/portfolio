@@ -2,19 +2,19 @@
     {
         "title": "BikeWatching",
         "year": "2025",
-        "image": "/img/BikeWatching.png",
+        "image": "./img/BikeWatching.png",
         "description": "Watch bikes in the Boston area 🚲"
     },
     {
         "title": "BattlePal",
         "year": "2023",
-        "image": "/img/GameStart.png",
+        "image": "../img/GameStart.png",
         "description": "An interactive text based game built with c++"
     },
     {
         "title": "TFConfig",
         "year": "2020",
-        "image": "/img/maxresdefault.jpg",
+        "image": "../img/maxresdefault.jpg",
         "description": "A compilation of my tf2 config and scripts"
     },
     {
