@@ -3,117 +3,131 @@
 }
 
 body {
-  font: 100%/1.5 system-ui;
+  font-family: Open Sans, Arial;
+  color: var(--text-color);
+  font-size: 16px;
   max-width: 100ch;
   margin-inline: max(1em, (100% - 100ch) / 2);
-  --color-accent:#b19cd9;
-  --border-color: oklch(50% 10% 200 / 40%);
+  --border-color:#b19cd9;
+  --color-accent: oklch(50% 10% 200 / 40%);
   accent-color: var(--color-accent);  
-  
   padding-top: 2rem;
-  background-color: canvas;
-  color: canvastext;
-
-  form { 
-    display: grid; 
-    grid-template-columns: auto 1fr; 
-    gap: 1em; 
-  }
-
-  button { grid-column: 1 / -1; }
-
-  nav { 
-    display: flex;
-    margin-bottom: 1em;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: var(--border-color);
-  }
-
-  nav a { 
-    flex: 1;
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-    padding: 0.5em;
-  }
-
-  nav a.current {
-    border-bottom: .4em;
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
-    border-bottom-color: var(--border-color);
-  }
-
-  nav a:hover {
-    border-bottom: .4em;
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
-    border-bottom-color: var(--color-accent);
-    /* background-color: oklch(from var(--color-accent) 95% 5% h) */
-  }
-
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    gap: 1em;
-  }
-  .projects article {
-    grid-template-rows: subgrid;
-    grid-row: span 3;
-    
-  }
-  .projects h2 { margin: 0; }
-
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1.1;
-    text-wrap: balance;
-  }
-
-  h1 { font-size: 350%; }
-  h2 { font-size: 140%; }
-  h3 { font-size: 100%; }
-  
-  section {
-    padding: 20px;
-    margin: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-header { text-align: center; }
+/* Sizing Headers*/
+h1 { font-size: 300%; 
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+h2 { font-size: 140%; }
+h3 { font-size: 100%; }
 
+/* Theme Switcher */
 .color-scheme {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 75%; 
-    font-family: inherit; 
-  }
-
-  input, textarea, button, .color-scheme {
-    font-family: inherit;
-  }
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 75%; 
+  font-family: inherit; 
 }
 
+/* Contact Form*/
+form { 
+  display: grid; 
+  grid-template-columns: auto 1fr; 
+  gap: 1em; 
+}
+
+button { grid-column: 1 / -1; }
+
+input, textarea, button, .color-scheme {
+  font-family: inherit;
+}
+
+/* Navigation Bar */
+nav {
+  display: flex;
+  margin-bottom: 1em;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-accent);
+  margin-top: -10px;
+}
+
+nav a { 
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em;
+}
+
+nav a.current {
+  border-bottom: .4em;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--border-color);
+}
+
+nav a:hover {
+  border-bottom: .4em;
+  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-accent);
+  transition: 100ms;
+}
+
+/* Projects */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1em;
+}
+.projects article {
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+}
+.projects h2 { margin: 0px; }
+
+.projects img {
+  max-width: 100%;
+  height: 150px;
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+/* Resume */
+section {
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 10px;
+  /* margin-top: 0px; */
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Profile Stats (on homepage) */
 #profile-stats dl {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 5px;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 3px;
+  border-radius: 4px;
   margin: 2px 0;
-}
-#profile-stats dt {
+}#profile-stats dt {
   grid-row: 1;
   font: inherit;
   font-weight: bold;
   font-size: 14px;
   text-align: center;
   margin: 2px 0;
-}
-#profile-stats dd{
+}#profile-stats dd{
   grid-row: 2; 
   font:inherit;
   font-size: 20px;
@@ -121,6 +135,7 @@ header { text-align: center; }
   margin: 2px 0;
 }
 
+/* Pie Chart */
 #ppie-plot {
   max-width: 20em;
   margin-block: 2em;
@@ -141,6 +156,7 @@ header { text-align: center; }
   grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
   justify-content: center;
   border: 2px solid #ddd; 
+  border-radius: 3px;
   flex: 1;
   gap: 6px;
   padding: 8px;
@@ -151,8 +167,6 @@ header { text-align: center; }
   font: inherit;
   align-items: center;
   padding: 6px 10px;
-  border-radius: 4px;
-  
 }
 
 .legend .swatch {
@@ -166,7 +180,7 @@ header { text-align: center; }
 
 &:has(path:hover) {
   path:not(:hover) {
-    opacity: 0.5;
+    opacity: 0.70;
   }
 }
 
@@ -185,6 +199,7 @@ path {
 
 .selected:is(li) { font-weight: bold; }
 
+/* Commit Graph Stats*/
 #stats dl {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -213,6 +228,7 @@ path {
   margin: 2px 0; 
 }
 
+/* Meta commits Tooltip */
 .gridlines line { stroke: #ddd; stroke-opacity: 0.6;} 
 .gridlines path { display: none; }
 

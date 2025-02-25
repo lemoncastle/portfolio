@@ -47,31 +47,33 @@ document.body.insertAdjacentHTML(
     <label class="color-scheme">
         Theme:
         <select>
-            <option value="light dark">Auto</option>    
             <option value="light">Light</option>
             <option value="dark">Dark</option>    
         </select>
     </label>
     `
-);
+); //<option value="light dark">Auto</option> 
 
-const select = document.querySelector('.color-scheme select'); //have to add select variable I guess ? I asked chatgpt to help me cause it wasn't working without this
+const select = document.querySelector('.color-scheme select'); 
 select.addEventListener('input', function (event) {
-    
-    document.documentElement.style.setProperty('color-scheme', event.target.value);
-    localStorage.colorScheme = event.target.value;
-    console.log('color scheme changed to', event.target.value);
+    setTheme(event.target.value);
+    localStorage.colorScheme = event.target.value; //local storage for theme
 });
 
-document.addEventListener('DOMContentLoaded', () => { //sets default theme (to light) cause fuck dark mode - chatgpt helped me with this
-    document.documentElement.style.setProperty('color-scheme', select.value="light");
+document.addEventListener('DOMContentLoaded', () => { //default theme is light
+    const savedScheme = localStorage.colorScheme || 'light';
+    setTheme(savedScheme);
+    select.value = savedScheme;
+});
 
-    if ('colorScheme' in localStorage) { //chatgpt told me to put this here instead 
-        document.documentElement.style.setProperty('color-scheme', localStorage.colorScheme);
-        select.value = localStorage.colorScheme; // Update the dropdown to match the saved theme
+function setTheme(scheme) {
+    document.documentElement.style.setProperty('color-scheme', scheme);
+    if (scheme === 'dark') {
+        document.documentElement.style.setProperty('--text-color', 'canvastext');
+    } else {
+        document.documentElement.style.setProperty('--text-color', '#454545');
     }
-
-});
+}
 
 const form = document.querySelector('form');
 

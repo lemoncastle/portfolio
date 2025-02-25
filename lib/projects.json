@@ -1,14 +1,20 @@
 [
     {
+        "title": "BikeWatching",
+        "year": "2025",
+        "image": "/img/BikeWatching.png",
+        "description": "Watch bikes in the Boston area 🚲"
+    },
+    {
         "title": "BattlePal",
         "year": "2023",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "image": "/img/GameStart.png",
         "description": "An interactive text based game built with c++"
     },
     {
         "title": "TFConfig",
         "year": "2020",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "image": "/img/maxresdefault.jpg",
         "description": "A compilation of my tf2 config and scripts"
     },
     {
@@ -45,7 +51,7 @@
         "title": "GameHub Nexus",
         "year": "2019",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "A social hub for gamers where they can track achievements, join tournaments, and discover trending games based on personalized recommendations."
+        "description": "A place where gamers can find the latest games through personalized recommendations."
     },
     {
         "title": "GhostWriter AI",
