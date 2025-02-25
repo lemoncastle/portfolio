@@ -8,6 +8,14 @@
     <!-- <script src="global.js" type="module"></script> -->
     <script src="index.js" type="module" defer></script>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (location.pathname === '/portfolio/' ) {
+                location.href = 'https://lemoncastle.github.io/portfolio//';
+            }
+        });
+    </script>
+
 </head>
 <body>
     <h1>Hi</h1>
