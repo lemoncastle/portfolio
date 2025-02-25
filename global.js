@@ -117,7 +117,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
     containerElement.innerHTML = ''; // clear element
 
-    project.forEach(project => { // bruh you need to make it a loop...
+    project.forEach(project => {
         // define title, image and description first and fill it with default text
         const title = project.title || "No Title";
         const image = project.image || "picture";

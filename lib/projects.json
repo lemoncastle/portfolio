@@ -18,6 +18,12 @@
         "description": "A compilation of my tf2 config and scripts"
     },
     {
+        "title": "Food Visualizer",
+        "year": "2025",
+        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+        "description": "Interactive visualizaiton of food data."
+    },
+    {
         "title": "TaskNinja",
         "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
@@ -34,12 +40,6 @@
         "year": "2019",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "A fitness tracking app that monitors workouts and helps set goals."
-    },
-    {
-        "title": "CodeQuest",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "An text based game that teaches you about coding and c++."
     },
     {
         "title": "PixelForge",
@@ -70,11 +70,5 @@
         "year": "2021",
         "image": "https://vis-society.github.io/labs/2/images/empty.svg",
         "description": "An easy to use travel planner for all your travelling needs."
-    },
-    {
-        "title": "EcoShopper",
-        "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "A browser extension that helps users shop online."
     }
 ]

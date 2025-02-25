@@ -86,8 +86,10 @@ nav a:hover {
 .projects article {
   grid-template-rows: subgrid;
   grid-row: span 3;
+  border: 1px solid #ddd;
+  padding: 10px;
 }
-.projects h2 { margin: 0px; }
+.projects h2 { margin: 5px; }
 
 .projects img {
   max-width: 100%;
