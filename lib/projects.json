@@ -2,7 +2,7 @@
     {
         "title": "BikeWatching",
         "year": "2025",
-        "image": "./img/BikeWatching.png",
+        "image": "../img/BikeWatching.png",
         "description": "Watch bikes in the Boston area 🚲"
     },
     {
