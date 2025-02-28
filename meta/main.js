@@ -3,6 +3,11 @@ let commits = [];
 let xScale = d3.scaleTime();
 let yScale = d3.scaleLinear();
 let brushSelection = null;
+let selectedCommits = [];
+
+let commitProgress = 100;
+let timeScale = d3.scaleTime([d3.min(commits, d => d.datetime), d3.max(commits, d => d.datetime)], [0, 100]);
+let commitMaxTime = timeScale.invert(commitProgress);
 
 updateTooltipVisibility(false);
 
@@ -128,12 +133,14 @@ function createScatterPlot() {
         .style('fill-opacity', 0.7) // Add transparency for overlapping dots
         .on('mouseenter', function (event, d) {
             d3.select(event.currentTarget).style('fill-opacity', 1); // Full opacity on hover
+            d3.select(event.currentTarget).classed('selected', true); // change color on hover
             updateTooltipContent(d);
             updateTooltipVisibility(true);
             updateTooltipPosition(event);
         })
         .on('mouseleave', function () {
             d3.select(event.currentTarget).style('fill-opacity', 0.7); // Restore transparency
+            d3.select(event.currentTarget).classed('selected', false); // change color on hover
             updateTooltipContent({});
             updateTooltipVisibility(false);
         });
@@ -185,21 +192,24 @@ function brushSelector() {
 
 function brushed(event) {
     brushSelection = event.selection;
+    selectedCommits = !brushSelection
+    ? []
+    : commits.filter((commit) => {
+        let min = { x: brushSelection[0][0], y: brushSelection[0][1] };
+        let max = { x: brushSelection[1][0], y: brushSelection[1][1] };
+        let x = xScale(commit.date);
+        let y = yScale(commit.hourFrac);
+
+        return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+    });
+
     updateSelection();
     updateSelectionCount();
     updateLanguageBreakdown();
 }
 
 function isCommitSelected(commit) {
-    if (!brushSelection) { return false; }
-    
-    const min = { x: brushSelection[0][0], y: brushSelection[0][1] };
-    const max = { x: brushSelection[1][0], y: brushSelection[1][1] };
-    
-    const x = xScale(commit.date);
-    const y = yScale(commit.hourFrac);
-    
-    return x >= min.x && x <= max.x && y >= min.y && y <= max.y;
+    return selectedCommits.includes(commit);
 }
   
 function updateSelection() { 
@@ -207,9 +217,7 @@ function updateSelection() {
 }
 
 function updateSelectionCount() {
-    const selectedCommits = brushSelection
-      ? commits.filter(isCommitSelected)
-      : [];
+    const selectedCommits = brushSelection? commits.filter(isCommitSelected): [];
   
     const countElement = document.getElementById('selection-count');
     countElement.textContent = `${

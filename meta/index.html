@@ -12,9 +12,17 @@
 </head>
 <body>
     <h1 class="Meta-Title">Meta</h1>
-    <h2>Website Stats</h2>
+    <div id = "filter">
+        <h2>Website Stats</h2>        
+        <label>
+            Show commits until:
+            <input type="range" id="commit-slider" min="0" max="100" value="0" >
+        </label>
+        <time id="commit-time">pooo0</time>
+    </div>
+    
     <div id="stats"></div>
-    <h2>Commits by Time of Day</h2>
+    <h2>Commits by Time of Day</h2>    
     <div id="chart"></div>
 
     <dl id="commit-tooltip" class="info tooltip">

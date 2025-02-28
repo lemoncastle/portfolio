@@ -318,3 +318,14 @@ circle.selected { fill: #ff6b6b; }
 }
 
 #language-breakdown dt, #language-breakdown dd { display: inline-block; }
+
+/* Meta slider */
+#filter {
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+}
+#filter h2 {
+  margin-right: 40px;
+}
+#filter input[type="range"] { width: 500px; }
