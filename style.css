@@ -274,7 +274,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
   left: 1em;
   padding: 10px;
   background: white;
-  color: black;
+  color: #454545;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition-duration: 350ms;
   font-size: 12px;
@@ -326,6 +326,16 @@ circle.selected { fill: #ff6b6b; }
   align-items: baseline;
 }
 #filter h2 {
-  margin-right: 40px;
+  margin-right: auto;
 }
 #filter input[type="range"] { width: 500px; }
+#time-slider {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right:5px;
+  margin-top: -15px;
+}
+
+/* Meta animations */
