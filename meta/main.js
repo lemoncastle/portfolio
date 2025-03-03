@@ -12,14 +12,10 @@ let timeScale;
 let commitMaxTime;
 const slider = document.getElementById('commit-slider');
 const commitTime = document.getElementById('time-slider');
+
 //step2?????????????????
-let lines = filteredCommits.flatMap((d) => d.lines);
+let lines;
 let files = [];
-files = d3
-  .groups(lines, (d) => d.file)
-  .map(([name, lines]) => {
-    return { name, lines };
-  });
 
 updateTooltipVisibility(false);
 
@@ -46,10 +42,18 @@ function updateCommitTime() {
     const sliderValue = slider.value;
     const commitMaxTime = timeScale.invert(sliderValue);
     commitTime.textContent = commitMaxTime.toLocaleString('en', { dateStyle: 'long', timeStyle: 'short' });
-
     filteredCommits = commits.filter((commit) => commit.datetime <= commitMaxTime);
+    
+    lines = filteredCommits.flatMap((d) => d.lines);
+    files = d3
+        .groups(lines, (d) => d.file)
+        .map(([name, lines]) => {
+    return { name, lines };
+    });
+
     updateScatterPlot(filteredCommits);
     displayStats();
+    renderFiles(files);
 }
 
 function processCommits() {
@@ -293,4 +297,25 @@ function updateLanguageBreakdown() {
     }
   
     return breakdown;
-  }
+}
+
+function renderFiles(files) {
+    d3.select('.files').selectAll('div').remove(); // clear element
+    files = d3.sort(files, (d) => -d.lines.length); // sort by # lines
+    let fileTypeColors = d3.scaleOrdinal(d3.schemeTableau10);
+
+    // Bind data to new div elements and append them to the .files container
+    let filesContainer = d3.select('.files').selectAll('div').data(files).enter().append('div');
+
+    let dt = filesContainer.append('dt'); // wrap into dt
+    dt.append('code').text(d => d.name);
+    dt.append('small').text(d => `Lines: ${d.lines.length}`);
+    
+    filesContainer.append('dd')
+            .selectAll('div')
+            .data(d => d.lines)
+            .enter()
+            .append('div')
+            .attr('class', 'line')
+            .style('background', (line) => fileTypeColors(line.type));
+}

@@ -9,6 +9,20 @@
     <script src="main.js" type="module"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link rel="icon" href="../img/folder_3767084.png" type="image/png">
+    <style>
+        body {
+            max-width: min(120ch, 80vw);
+            margin-right: auto;
+            margin-left: auto;
+        }
+        nav, #stats, #filter, #time-slider {
+            max-width:100ch;
+            margin-inline: max(1em, (100% - 100ch) / 2);
+        }
+        .Meta-Title {
+            margin-left: 1.85em;
+        }
+      </style>
 </head>
 <body>
     <h1 class="Meta-Title">Meta</h1>
@@ -20,10 +34,18 @@
         </label>
     </div>    
     <p id="time-slider">aslkfj</p>
-    
+
     <div id="stats"></div>
     <h2>Commits by Time of Day</h2>    
-    <div id="chart"></div>
+    
+    <div id="scrollytelling">
+        <div id="scroll-container">
+            <div id="spacer"></div>
+            <div id="items-container"></div>
+        </div>
+        <!-- our old scatterplot div -->
+        <div id="chart"></div>
+    </div>
 
     <dl id="commit-tooltip" class="info tooltip">
         <dt>Commit</dt>
@@ -46,5 +68,7 @@
 
     <p id="selection-count">No commits selected</p>
     <dl id="language-breakdown" class="stats"></dl>
+
+    <dl class="files"></dl>
 </body>
 </html>

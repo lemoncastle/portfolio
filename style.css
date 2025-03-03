@@ -338,4 +338,87 @@ circle.selected { fill: #ff6b6b; }
   margin-top: -15px;
 }
 
-/* Meta animations */
+/* file slider visualization */
+.files {
+  display:flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.files > div {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+}
+
+.files dt {
+  grid-column: 1;
+  font-weight: bold;
+}
+
+.files dt small {
+  display: block;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.files dd .line {
+  display: flex;
+  width: 0.5em;
+  height: 0.5em; /* instead of aspect ratio*/
+  background: #a28ad2;
+  border-radius: 50%;
+}
+
+.files dd {
+  display: flex;
+  grid-column: 2;
+  flex-wrap: wrap;
+  gap: 0.15em;
+  padding-top: 0.6em;
+}
+
+/* scrolly styling */
+#scrollytelling {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+/* feel free to play with this to make your scrolly more seemless with your plot */
+#scroll-container {
+  grid-column: 1;
+  position: relative;
+  width: 95%;
+  height: 350px;
+  overflow-y: scroll;
+  border: 1px solid #ccc;
+  margin-bottom: 50px;
+}
+
+#chart {
+  grid-column: 2;
+}
+
+#spacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none; /* transparent */
+  pointer-events: none;
+}
+
+#items-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.item {
+  height: 30px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 2px solid #eee;
+}
