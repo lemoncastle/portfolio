@@ -390,10 +390,10 @@ circle.selected { fill: #ff6b6b; }
   grid-column: 1;
   position: relative;
   width: 95%;
-  height: 350px;
+  height: 300px;
   overflow-y: scroll;
   border: 1px solid #ccc;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 #chart {
@@ -414,11 +414,4 @@ circle.selected { fill: #ff6b6b; }
   top: 0;
   left: 0;
   width: 100%;
-}
-
-.item {
-  height: 30px;
-  padding: 10px;
-  box-sizing: border-box;
-  border-bottom: 2px solid #eee;
 }

@@ -5,6 +5,7 @@ let xScale = d3.scaleTime();
 let yScale = d3.scaleLinear();
 let brushSelection = null;
 let selectedCommits = [];
+let accumulatedCommits = []; // Stores all commits that have been loaded so far
 
 //slider
 let commitProgress = 100;
@@ -16,6 +17,22 @@ const commitTime = document.getElementById('time-slider');
 //step2?????????????????
 let lines;
 let files = [];
+
+//scrolly
+let NUM_ITEMS = 31; // Ideally, let this value be the length of your commit history
+let ITEM_HEIGHT = 75; // Feel free to change
+let VISIBLE_COUNT = 4; // Feel free to change as well
+let totalHeight = (NUM_ITEMS - 1) * ITEM_HEIGHT;
+const scrollContainer = d3.select('#scroll-container');
+const spacer = d3.select('#spacer');
+spacer.style('height', `${totalHeight}px`);
+const itemsContainer = d3.select('#items-container');
+scrollContainer.on('scroll', () => {
+    const scrollTop = scrollContainer.property('scrollTop');
+    let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+    startIndex = Math.max(0, Math.min(startIndex, commits.length - VISIBLE_COUNT));
+    renderItems(startIndex);
+});
 
 updateTooltipVisibility(false);
 
@@ -34,6 +51,7 @@ async function loadData() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
     updateCommitTime(); // Initial update
+    renderItems(0); // Initial render
 });
 
 // Event listener for slider
@@ -319,3 +337,59 @@ function renderFiles(files) {
             .attr('class', 'line')
             .style('background', (line) => fileTypeColors(line.type));
 }
+
+function renderItems(startIndex) {
+    itemsContainer.selectAll('div').remove(); // Clear existing commit text items
+    
+    const endIndex = Math.min(startIndex + VISIBLE_COUNT, commits.length);
+    let newCommitSlice = commits.slice(startIndex, endIndex);
+    
+    if (startIndex + VISIBLE_COUNT >= commits.length) {
+        // At the end, keep all commits
+        accumulatedCommits = commits.slice(0, commits.length);
+    } else if (startIndex > accumulatedCommits.length) {
+        // Scroll down -Add new commits
+        accumulatedCommits = [...new Set([...accumulatedCommits, ...newCommitSlice])];
+    } else {
+        // Scroll -Remove older commits
+        const minIndex = Math.max(0, startIndex - VISIBLE_COUNT);
+        accumulatedCommits = commits.slice(minIndex, endIndex);
+    }
+    updateScatterPlot(accumulatedCommits);
+    filteredCommits = accumulatedCommits;
+    itemsContainer.selectAll('div') 
+        .data(newCommitSlice)
+        .enter()
+        .append('div')
+        .html((d, index) => `
+            <p>
+                On ${d.datetime.toLocaleString("en", { dateStyle: "full", timeStyle: "short" })}, I made
+                <a href="${d.url}" target="_blank">
+                    ${index > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'}
+                </a>. I edited ${d.totalLines} lines across ${d3.rollups(d.lines, D => D.length, d => d.file).length} files. Then I looked over all I had made, and I saw that it was very good.
+            </p>
+        `)
+        .style('position', 'absolute')
+        .style('top', (_, idx) => `${(startIndex + idx) * ITEM_HEIGHT}px`);
+    
+        displayCommitFiles();
+}
+
+function displayCommitFiles() {
+    const lines = filteredCommits.flatMap((d) => d.lines);
+    let fileTypeColors = d3.scaleOrdinal(d3.schemeTableau10);
+    let files = d3.groups(lines, (d) => d.file).map(([name, lines]) => {
+      return { name, lines };
+    });
+    files = d3.sort(files, (d) => -d.lines.length);
+    d3.select('.files').selectAll('div').remove();
+    let filesContainer = d3.select('.files').selectAll('div').data(files).enter().append('div');
+    filesContainer.append('dt').html(d => `<code>${d.name}</code><small>${d.lines.length} lines</small>`);
+    filesContainer.append('dd')
+                  .selectAll('div')
+                  .data(d => d.lines)
+                  .enter()
+                  .append('div')
+                  .attr('class', 'line')
+                  .style('background', d => fileTypeColors(d.type));
+  }
