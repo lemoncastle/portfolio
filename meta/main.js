@@ -27,12 +27,14 @@ const scrollContainer = d3.select('#scroll-container');
 const spacer = d3.select('#spacer');
 spacer.style('height', `${totalHeight}px`);
 const itemsContainer = d3.select('#items-container');
-scrollContainer.on('scroll', () => {
-    const scrollTop = scrollContainer.property('scrollTop');
-    let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
-    startIndex = Math.max(0, Math.min(startIndex, commits.length - VISIBLE_COUNT));
-    renderItems(startIndex);
-});
+
+
+//scrolly2
+const scrollContainer3 = d3.select('#scroll-container3');
+const spacer3 = d3.select('#spacer3');
+spacer3.style('height', `${totalHeight}px`);
+const itemsContainer3 = d3.select('#items-container3');
+
 
 updateTooltipVisibility(false);
 
@@ -51,7 +53,22 @@ async function loadData() {
 document.addEventListener('DOMContentLoaded', async () => {
     await loadData();
     updateCommitTime(); // Initial update
-    renderItems(0); // Initial render
+    renderItems(itemsContainer, 0); // Initial render
+    renderItems(itemsContainer3, 0); // Initial render
+});
+
+scrollContainer.on('scroll', () => {
+    const scrollTop = scrollContainer.property('scrollTop');
+    let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+    startIndex = Math.max(0, Math.min(startIndex, commits.length - VISIBLE_COUNT));
+    renderItems(itemsContainer, startIndex);
+});
+
+scrollContainer3.on('scroll', () => {
+    const scrollTop = scrollContainer3.property('scrollTop');
+    let startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+    startIndex = Math.max(0, Math.min(startIndex, commits.length - VISIBLE_COUNT));
+    renderItems(itemsContainer3, startIndex);
 });
 
 // Event listener for slider
@@ -338,8 +355,8 @@ function renderFiles(files) {
             .style('background', (line) => fileTypeColors(line.type));
 }
 
-function renderItems(startIndex) {
-    itemsContainer.selectAll('div').remove(); // Clear existing commit text items
+function renderItems(container, startIndex) {
+    container.selectAll('div').remove(); // Clear existing commit text items
     
     const endIndex = Math.min(startIndex + VISIBLE_COUNT, commits.length);
     let newCommitSlice = commits.slice(startIndex, endIndex);
@@ -348,31 +365,36 @@ function renderItems(startIndex) {
         // At the end, keep all commits
         accumulatedCommits = commits.slice(0, commits.length);
     } else if (startIndex > accumulatedCommits.length) {
-        // Scroll down -Add new commits
+        // Scroll down - Add new commits
         accumulatedCommits = [...new Set([...accumulatedCommits, ...newCommitSlice])];
     } else {
-        // Scroll -Remove older commits
+        // Scroll - Remove older commits
         const minIndex = Math.max(0, startIndex - VISIBLE_COUNT);
         accumulatedCommits = commits.slice(minIndex, endIndex);
     }
-    updateScatterPlot(accumulatedCommits);
+    if (container.attr('id') === 'items-container') {
+        updateScatterPlot(accumulatedCommits);
+    }
     filteredCommits = accumulatedCommits;
-    itemsContainer.selectAll('div') 
+    container.selectAll('div') 
         .data(newCommitSlice)
         .enter()
         .append('div')
-        .html((d, index) => `
-            <p>
-                On ${d.datetime.toLocaleString("en", { dateStyle: "full", timeStyle: "short" })}, I made
-                <a href="${d.url}" target="_blank">
-                    ${index > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'}
-                </a>. I edited ${d.totalLines} lines across ${d3.rollups(d.lines, D => D.length, d => d.file).length} files. Then I looked over all I had made, and I saw that it was very good.
-            </p>
+        .html((d, index) => `  
+            <p>  
+                On ${d.datetime.toLocaleString("en", { dateStyle: "full", timeStyle: "short" })}, I  
+                <a href="${d.url}" target="_blank">  
+                    ${index > 0 ? 'made another meaningful contribution' : 'committed for the first time, marking a glorious milestone'}  
+                </a>, editing ${d.totalLines} lines across ${d3.rollups(d.lines, D => D.length, d => d.file).length} files.  
+                Today’s commit? <strong>made the repo cooler</strong>  
+            </p>   
         `)
         .style('position', 'absolute')
         .style('top', (_, idx) => `${(startIndex + idx) * ITEM_HEIGHT}px`);
     
+    if(container.attr('id') === 'items-container3') {
         displayCommitFiles();
+    }
 }
 
 function displayCommitFiles() {
