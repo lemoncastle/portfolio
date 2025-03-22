@@ -7,6 +7,7 @@
 - Lab4 more javascripting
 - Lab 5 visualizations with D3
 - Lab 6 visualizing quantitiave data in D3
+- Lab 8 Animation and Scrollytelling
 
-that's as far as I've gone. All pretty interesting but kind of confusing by the way things are formatted. 
-- what's interesting is that labs are due on friday and our discussions are on friday of the lab that's due that day. so it's kind of not very useful lol
+What's interesting is that labs are due on friday and our discussions are on friday of the lab that's due that day. so it's kind of not very useful lol
+- The formatting is slightly confusing especially the last lab. 
